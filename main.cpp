@@ -1,51 +1,31 @@
+/**
+ * @file main.cpp
+ * @author nashdev255
+ * @brief size : 8 by 8, make without class this time
+ * 
+ */
 #include <iostream>
 #include <vector>
 
-class Board {
-    private:
-        int length;
-        std::vector<std::vector<int>> board;
+#define BOARD_LENGTH    8
 
-    public:
-        Board(int length);
+void showBoard(int board[BOARD_LENGTH][BOARD_LENGTH]);
 
-        void initBoard();
+int main() {
+    int board[BOARD_LENGTH][BOARD_LENGTH] = { 0 };
+    board[3][3] = 1; board[3][4] = 2;
+    board[4][3] = 2; board[4][4] = 1;
 
-        void showBoard();
+    showBoard(board);
 
-        int getLength();
-        void setLength(int length);
-
-};
-
-inline Board :: Board(int length) {
-    this->length = length;
-    this->initBoard();
+    return 0;
 }
 
-inline int Board :: getLength() {
-    return this->length;
-}
-
-inline void Board :: setLength(int length) {
-    this->length = length;
-}
-
-inline void Board :: initBoard() {
-
-}
-
-inline void Board :: showBoard() {
-    for(int i=0;i<this->length;i++) {
-        for(int j=0;j<this->length;j++) {
-            std::cout << this->board[i][j];
+void showBoard(int board[BOARD_LENGTH][BOARD_LENGTH]) {
+    for(int i=0;i<BOARD_LENGTH;i++) {
+        for(int j=0;j<BOARD_LENGTH;j++) {
+            std::cout << board[i][j] << ' ';
         }
         std::cout << std::endl;
     }
-}
-
-int main() {
-    Board* board = new Board(8);
-    board->showBoard();
-    return 0;
 }
